@@ -1,0 +1,6 @@
+{
+  "name": "FixRural Digital - Servicios Técnicos y Mantenimiento para el Campo",
+  "description": "Plataforma oficial de FixRural Digital: Servicios técnicos, reparación y mantenimiento para el campo, motobombas, cercas eléctricas, plomería rural y calculadora de flete veredal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
