@@ -47,7 +47,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     name: '',
     price: 100000,
     category: 'motobombas',
-    image: '/src/assets/images/service_motobomba_1792873894922.jpg',
+    image: '/images/service_motobomba.jpg',
     description: '',
     estimatedTime: '2 horas',
   });
@@ -76,7 +76,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       name: '',
       price: 100000,
       category: 'motobombas',
-      image: '/src/assets/images/service_motobomba_1792873894922.jpg',
+      image: '/images/service_motobomba.jpg',
       description: '',
       estimatedTime: '2 a 3 horas',
     });

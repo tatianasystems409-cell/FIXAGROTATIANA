@@ -18,7 +18,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCalculator, onOpenPhotoStudio 
       {/* Background Graphic & Fluid Image with Scrim */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/hero_fixrural_campo_1792873893587.jpg"
+          src="/images/hero_fixrural_campo.jpg"
           alt="Técnica agrícola revisando sistema en finca veredal FixRural"
           className="w-full h-full object-cover object-center opacity-35"
           referrerPolicy="no-referrer"

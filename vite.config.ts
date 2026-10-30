@@ -1,15 +1,21 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import {defineConfig} from 'vite';
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': fileURLToPath(new URL('.', import.meta.url)),
       },
+    },
+    build: {
+      // Seguridad: desactiva los mapas de código fuente (source maps) para que nadie pueda ver el código original en el navegador
+      sourcemap: false,
+      minify: 'esbuild' as const,
+      target: 'es2022',
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.

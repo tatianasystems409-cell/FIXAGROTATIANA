@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Service, Technician, QuoteRequest } from './types';
 import { INITIAL_SERVICES, INITIAL_TECHNICIANS, INITIAL_QUOTES } from './data/mockData';
 import { Header } from './components/Header';
@@ -13,6 +13,8 @@ import { LoginModal } from './components/LoginModal';
 import { AdminDashboard } from './components/AdminDashboard';
 import { PhotoCleanUpStudio } from './components/PhotoCleanUpStudio';
 import { Footer } from './components/Footer';
+import { DevToolsLockScreen } from './components/DevToolsLockScreen';
+import { subscribeDevTools } from './utils/security';
 
 export default function App() {
   // App views
@@ -28,6 +30,15 @@ export default function App() {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState<boolean>(false);
   const [isPhotoStudioOpen, setIsPhotoStudioOpen] = useState<boolean>(false);
   const [selectedServiceForQuote, setSelectedServiceForQuote] = useState<Service | null>(null);
+  const [isDevToolsLocked, setIsDevToolsLocked] = useState<boolean>(false);
+
+  // Escuchar detección de herramientas de desarrollador
+  useEffect(() => {
+    const unsubscribe = subscribeDevTools((isOpen) => {
+      setIsDevToolsLocked(isOpen);
+    });
+    return unsubscribe;
+  }, []);
 
   const handleOpenCalculator = () => {
     setView('public');
@@ -134,6 +145,11 @@ export default function App() {
         isOpen={isPhotoStudioOpen}
         onClose={() => setIsPhotoStudioOpen(false)}
       />
+
+      {/* Pantalla de Bloqueo de Seguridad por Herramientas de Desarrollo */}
+      {isDevToolsLocked && (
+        <DevToolsLockScreen onUnlock={() => setIsDevToolsLocked(false)} />
+      )}
     </div>
   );
 }

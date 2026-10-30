@@ -59,7 +59,7 @@ export const INITIAL_SERVICES: Service[] = [
     category: 'motobombas',
     price: 110000,
     description: 'Limpieza de carburador o inyector, cambio de empaques, ajuste de válvulas, chequeo de compresión y prueba de caudal bajo carga.',
-    image: '/src/assets/images/service_motobomba_1792873894922.jpg',
+    image: '/images/service_motobomba.jpg',
     popular: true,
     estimatedTime: '2 a 3 horas en finca',
     active: true
@@ -70,7 +70,7 @@ export const INITIAL_SERVICES: Service[] = [
     category: 'motobombas',
     price: 145000,
     description: 'Diagnóstico de aislamiento dieléctrico, cambio de sello mecánico cerámico, rodamientos sellados y prueba de hermeticidad.',
-    image: '/src/assets/images/service_motobomba_1792873894922.jpg',
+    image: '/images/service_motobomba.jpg',
     popular: false,
     estimatedTime: 'Mismo día o 24h con taller móvil',
     active: true
@@ -81,7 +81,7 @@ export const INITIAL_SERVICES: Service[] = [
     category: 'electricidad',
     price: 125000,
     description: 'Montaje de panel solar fotovoltaico, regulador, batería de ciclo profundo, varilla de polo a tierra copperweld y medición de kilovoltios.',
-    image: '/src/assets/images/service_cercas_1792873894915.jpg',
+    image: '/images/service_cercas.jpg',
     popular: true,
     estimatedTime: '3 a 4 horas en potrero',
     active: true
@@ -92,7 +92,7 @@ export const INITIAL_SERVICES: Service[] = [
     category: 'electricidad',
     price: 90000,
     description: 'Detección de chispazos y fugas a tierra, reemplazo de condensadores quemados por descargas de tormenta y chequeo de corte.',
-    image: '/src/assets/images/service_cercas_1792873894915.jpg',
+    image: '/images/service_cercas.jpg',
     popular: false,
     estimatedTime: '1 a 2 horas',
     active: true
@@ -103,7 +103,7 @@ export const INITIAL_SERVICES: Service[] = [
     category: 'plomeria',
     price: 95000,
     description: 'Termofusión y roscado de manguera de alta densidad, instalación de ventosas rompedoras de vacío, cajas de paso y manómetros.',
-    image: '/src/assets/images/service_hidraulica_1792873895217.jpg',
+    image: '/images/service_hidraulica.jpg',
     popular: true,
     estimatedTime: '2 a 4 horas',
     active: true
@@ -114,7 +114,7 @@ export const INITIAL_SERVICES: Service[] = [
     category: 'plomeria',
     price: 85000,
     description: 'Adecuación de base estructural, acople de flotadores mecánicos reforzados, filtros de sedimentos y reboses protegidos.',
-    image: '/src/assets/images/service_hidraulica_1792873895217.jpg',
+    image: '/images/service_hidraulica.jpg',
     popular: false,
     estimatedTime: '2 horas',
     active: true
@@ -125,7 +125,7 @@ export const INITIAL_SERVICES: Service[] = [
     category: 'electrodomesticos',
     price: 135000,
     description: 'Revisión de compresor frigorífico, termostato digital, aspas del agitador, nivel de gas refrigerante y lavado higiénico de serpentín.',
-    image: '/src/assets/images/hero_fixrural_campo_1792873893587.jpg',
+    image: '/images/hero_fixrural_campo.jpg',
     popular: true,
     estimatedTime: '3 horas',
     active: true
@@ -136,7 +136,7 @@ export const INITIAL_SERVICES: Service[] = [
     category: 'maquinaria',
     price: 100000,
     description: 'Afilado de cuchillas de corte, calibración de poleas y correas, engrase de chumaceras y alineación del eje de transmisión.',
-    image: '/src/assets/images/service_motobomba_1792873894922.jpg',
+    image: '/images/service_motobomba.jpg',
     popular: false,
     estimatedTime: '2 horas',
     active: true

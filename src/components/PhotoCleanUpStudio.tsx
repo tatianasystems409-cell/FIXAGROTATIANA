@@ -11,19 +11,19 @@ const SAMPLE_PARTS = [
     id: 'sample-1',
     name: 'Impulsor de Motobomba de Bronce',
     instruction: 'Remover fondo del taller y colocar fondo blanco puro para catálogo técnico',
-    url: '/src/assets/images/service_motobomba_1792873894922.jpg'
+    url: '/images/service_motobomba.jpg'
   },
   {
     id: 'sample-2',
     name: 'Energizador Solar de Cerca',
     instruction: 'Aislar equipo, remover pasto de fondo y dar acabado nítido de estudio',
-    url: '/src/assets/images/service_cercas_1792873894915.jpg'
+    url: '/images/service_cercas.jpg'
   },
   {
     id: 'sample-3',
     name: 'Válvula de Distribución Hidráulica',
     instruction: 'Quitar fondo exterior y exportar en fondo transparente PNG',
-    url: '/src/assets/images/service_hidraulica_1792873895217.jpg'
+    url: '/images/service_hidraulica.jpg'
   }
 ];
 

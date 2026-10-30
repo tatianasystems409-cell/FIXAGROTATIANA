@@ -1,7 +1,49 @@
 /**
- * FixRural Digital - Módulo de Seguridad y Protección de Código
- * Protege contra inspección no autorizada, apertura de consola de programador y robo de credenciales.
+ * FixRural Digital - Módulo de Seguridad y Detección de Herramientas de Desarrollo
+ * Detecta apertura de DevTools desde atajos o el menú "Más Herramientas -> Herramientas de Desarrollador",
+ * bloquea la consola y protege la integridad del código fuente.
  */
+
+type DevToolsListener = (isOpen: boolean) => void;
+const listeners: Set<DevToolsListener> = new Set();
+let isDevToolsCurrentlyOpen = false;
+let isSessionAuthorized = false;
+
+export function setSessionAuthorized(authorized: boolean) {
+  isSessionAuthorized = authorized;
+  if (authorized) {
+    notifyListeners(false);
+  }
+}
+
+export function getIsSessionAuthorized(): boolean {
+  return isSessionAuthorized;
+}
+
+function notifyListeners(isOpen: boolean) {
+  if (isSessionAuthorized && isOpen) {
+    return; // Si la administradora ya autorizó la sesión, no bloquea
+  }
+  isDevToolsCurrentlyOpen = isOpen;
+  listeners.forEach((listener) => {
+    try {
+      listener(isOpen);
+    } catch {
+      // Ignorar errores de callback
+    }
+  });
+}
+
+export function subscribeDevTools(listener: DevToolsListener): () => void {
+  listeners.add(listener);
+  // Emitir estado inicial
+  if (isDevToolsCurrentlyOpen && !isSessionAuthorized) {
+    listener(true);
+  }
+  return () => {
+    listeners.delete(listener);
+  };
+}
 
 export function initSecurityShield() {
   if (typeof window === 'undefined') return;
@@ -17,6 +59,7 @@ export function initSecurityShield() {
     if (e.key === 'F12' || e.keyCode === 123) {
       e.preventDefault();
       e.stopPropagation();
+      notifyListeners(true);
       return false;
     }
 
@@ -28,6 +71,7 @@ export function initSecurityShield() {
     if (isCtrlOrCmd && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
       e.preventDefault();
       e.stopPropagation();
+      notifyListeners(true);
       return false;
     }
 
@@ -35,6 +79,7 @@ export function initSecurityShield() {
     if (isCtrlOrCmd && (e.key === 'U' || e.key === 'u')) {
       e.preventDefault();
       e.stopPropagation();
+      notifyListeners(true);
       return false;
     }
 
@@ -46,7 +91,44 @@ export function initSecurityShield() {
     }
   }, { capture: true });
 
-  // 3. Limpiar y desactivar funciones de consola en modo producción
+  // 3. Detección por cambio de dimensiones (DevTools anclado lateral o inferior)
+  const checkDimensions = () => {
+    if (isSessionAuthorized) return;
+    const widthThreshold = window.outerWidth - window.innerWidth > 160;
+    const heightThreshold = window.outerHeight - window.innerHeight > 160;
+    if (widthThreshold || heightThreshold) {
+      notifyListeners(true);
+    }
+  };
+
+  window.addEventListener('resize', checkDimensions);
+
+  // 4. Detección por evaluación de getters de consola
+  try {
+    const snifferElement = new Image();
+    Object.defineProperty(snifferElement, 'id', {
+      get: () => {
+        if (!isSessionAuthorized) {
+          notifyListeners(true);
+        }
+      },
+    });
+
+    // Periódicamente verificar si DevTools lee los objetos en consola
+    setInterval(() => {
+      if (isSessionAuthorized) return;
+      checkDimensions();
+      try {
+        console.dir(snifferElement);
+      } catch {
+        // Silently continue
+      }
+    }, 1500);
+  } catch {
+    // Ignorar si el navegador bloquea getters
+  }
+
+  // 5. Limpiar y desactivar funciones de consola
   const noop = () => {};
   try {
     const banner = 
@@ -62,7 +144,6 @@ export function initSecurityShield() {
       'color: #2E7D32; font-size: 12px; line-height: 1.6;'
     );
 
-    // Sobrescribir inspectores comunes
     window.console.warn = noop;
     window.console.info = noop;
     window.console.debug = noop;
@@ -70,7 +151,7 @@ export function initSecurityShield() {
     // Silently continue
   }
 
-  // 4. Bloquear drag & drop de imágenes para evitar descarga indebida
+  // 6. Bloquear drag & drop de imágenes
   window.addEventListener('dragstart', (e) => {
     if ((e.target as HTMLElement)?.tagName === 'IMG') {
       e.preventDefault();
