@@ -3,17 +3,14 @@
 > **Plataforma web e infraestructura de soporte técnico veredal para maquinaria agrícola en Colombia.**  
 > *Proyecto de Aula (ACA) — Plan de Negocio Aplicado (NRC 54429)*
 
-[![Vercel Deployment]([suspicious link removed])](https://fixruraldigital.vercel.app)
-[![Node.js]([suspicious link removed])]([suspicious link removed])
-[![React / Next.js]([suspicious link removed])]([suspicious link removed])
-[![Tailwind CSS]([suspicious link removed])]([suspicious link removed])
-[![License: MIT]([suspicious link removed])](LICENSE)
+(https://fixruraldigital.vercel.app)
+
 
 ---
 
 ## 📌 🌐 Enlaces en Producción & Contacto
 
-* 🚀 **Plataforma Web en Vivo:** (https://fixruraldigital.vercel.app)](https://fixagrotatiana.vercel.app/)
+* 🚀 **Plataforma Web en Vivo: (https://fixruraldigital.vercel.app)
 * 📲 **Asistente & Canal WhatsApp:** `+57 310 358 6278`
 * 📍 **Zona de Cobertura Inicial:** Güepsa y Provincia de Vélez (Santander, Colombia)
 
