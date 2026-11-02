@@ -13,7 +13,7 @@
 
 ## 📌 🌐 Enlaces en Producción & Contacto
 
-* 🚀 **Plataforma Web en Vivo:** [`fixruraldigital.vercel.app`](https://fixruraldigital.vercel.app)
+* 🚀 **Plataforma Web en Vivo:** [[`fixruraldigital.vercel.app`](https://fixruraldigital.vercel.app)](https://fixagrotatiana.vercel.app/)
 * 📲 **Asistente & Canal WhatsApp:** `+57 310 358 6278`
 * 📍 **Zona de Cobertura Inicial:** Güepsa y Provincia de Vélez (Santander, Colombia)
 
